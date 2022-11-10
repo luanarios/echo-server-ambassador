@@ -1,0 +1,5 @@
+env:
+- name: AMBASSADOR_NAMESPACE
+  valueFrom:
+    fieldRef:
+      fieldPath: metadata.namespace

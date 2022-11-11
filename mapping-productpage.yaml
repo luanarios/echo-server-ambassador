@@ -4,7 +4,7 @@ metadata:
   name: bookinfo-productpage
   namespace: default
 spec:
-  host: 172.21.0.2
+  host: test.bookinfo.com
   prefix: /
   service: productpage.default.svc:9080
   timeout_ms: 30000

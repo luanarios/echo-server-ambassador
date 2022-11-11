@@ -5,7 +5,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ambassador-admin
-  namespace: default
+  namespace: ambassador
   labels:
     # Hard-coded label for Prometheus Operator ServiceMonitor
     service: ambassador-admin
@@ -52,7 +52,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: ambassador
-  namespace: default
+  namespace: ambassador
   labels:
     product: aes
 ---
@@ -69,7 +69,7 @@ roleRef:
   name: ambassador
 subjects:
 - name: ambassador
-  namespace: default
+  namespace: ambassador
   kind: ServiceAccount
 ---
 # Source: ambassador/templates/rbac.yaml
@@ -137,7 +137,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ambassador
-  namespace: default
+  namespace: ambassador
   labels:
     product: aes
 spec:
@@ -236,7 +236,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: ambassador-agent
-  namespace: default
+  namespace: ambassador
   labels:
     product: aes
 ---
@@ -254,7 +254,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: ambassador-agent
-  namespace: default
+  namespace: ambassador
 ---
 # Source: ambassador/templates/ambassador-agent.yaml
 apiVersion: rbac.authorization.k8s.io/v1beta1
@@ -352,7 +352,7 @@ apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: Role
 metadata:
   name: ambassador-agent-config
-  namespace: default
+  namespace: ambassador
   labels:
     product: aes
 rules:
@@ -365,7 +365,7 @@ apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: RoleBinding
 metadata:
   name: ambassador-agent-config
-  namespace: default
+  namespace: ambassador
   labels:
     product: aes
 roleRef:
@@ -375,14 +375,14 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: ambassador-agent
-  namespace: default
+  namespace: ambassador
 ---
 # Source: ambassador/templates/ambassador-agent.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ambassador-agent
-  namespace: default
+  namespace: ambassador
   labels:
     app.kubernetes.io/name: ambassador-agent
     app.kubernetes.io/instance: ambassador

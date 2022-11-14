@@ -1,0 +1,11 @@
+apiVersion: getambassador.io/v2
+kind: Mapping
+metadata:
+  name: bookinfo-ratings
+  namespace: default
+spec:
+  host: test.bookinfo.com
+  prefix: /ratings/
+  rewrite: ""
+  service: ratings.default.svc:9080
+  timeout_ms: 30000

@@ -1,0 +1,9 @@
+apiVersion: getambassador.io/v2
+kind: Host
+metadata:
+  name: bookinfo-host
+spec:
+  hostname: "*.bookinfo.com"
+  requestPolicy:
+    insecure:
+      action: Route

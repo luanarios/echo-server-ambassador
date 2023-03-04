@@ -8,4 +8,5 @@ spec:
   prefix: /
   service: productpage.default.svc:9080
   timeout_ms: 30000
+
   

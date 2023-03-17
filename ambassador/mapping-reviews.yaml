@@ -1,4 +1,4 @@
-apiVersion: getambassador.io/v2
+apiVersion: getambassador.io/v3alpha1
 kind: Mapping
 metadata:
   name: bookinfo-reviews-v1
@@ -10,7 +10,7 @@ spec:
   service: reviews-v1.default.svc:9080
   timeout_ms: 30000
 ---
-apiVersion: getambassador.io/v2
+apiVersion: getambassador.io/v3alpha2
 kind: Mapping
 metadata:
   name: bookinfo-reviews-v2
@@ -22,7 +22,7 @@ spec:
   service: reviews-v2.default.svc:9080
   timeout_ms: 30000
 ---
-apiVersion: getambassador.io/v2
+apiVersion: getambassador.io/v3alpha3
 kind: Mapping
 metadata:
   name: bookinfo-reviews-v3

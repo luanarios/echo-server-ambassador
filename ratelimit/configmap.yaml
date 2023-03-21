@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ratelimit
+data:
+  config: |-
+    domain: emissary
+    descriptors:
+      - key: foo
+        rate_limit:
+          unit: minute
+          requests_per_unit: 5

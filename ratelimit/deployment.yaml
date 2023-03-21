@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ratelimit
+  labels:
+    app: ratelimit
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ratelimit
+  template:
+    metadata:
+      labels:
+        app: ratelimit
+    spec:
+      containers:
+      - command:
+        - /bin/ratelimit
+        name: ratelimit
+        image: envoyproxy/ratelimit:master
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: http
+          containerPort: 8080
+        - name: grpc
+          containerPort: 8081
+        - name: debug
+          containerPort: 6070
+        volumeMounts:
+        - mountPath: /data/ratelimit/
+          name: rlconfig
+        env:
+          - name: USE_STATSD
+            value: 'false'
+          - name: LOG_LEVEL
+            value: debug
+          - name: REDIS_SOCKET_TYPE
+            value: tcp
+          - name: REDIS_URL
+            value: redis-master.default.svc:6379
+          - name: RUNTIME_ROOT
+            value: /data
+          - name: RUNTIME_SUBDIRECTORY
+            value: ratelimit
+          - name: RUNTIME_WATCH_ROOT
+            value: 'false'
+          - name: CONFIG_TYPE
+            value: FILE
+          - name: CONFIG_GRPC_XDS_NODE_ID
+            value: test-node-id
+          - name: CONFIG_GRPC_XDS_SERVER_URL
+            value: ratelimit-xds-config-server:18000
+        resources:
+          limits:
+            cpu: "1"
+            memory: 200Mi
+        securityContext:
+          runAsUser: 1000
+      volumes:
+      - configMap:
+          defaultMode: 511
+          name: ratelimit
+          optional: false
+        name: rlconfig

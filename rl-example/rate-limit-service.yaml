@@ -1,9 +1,0 @@
-apiVersion: getambassador.io/v3alpha1
-kind: RateLimitService
-metadata:
-  name: ratelimit
-  namespace: default
-spec:
-  service: "ratelimit-example.default.svc:5000"
-  protocol_version: v3
-  domain: emissary

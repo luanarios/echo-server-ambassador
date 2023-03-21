@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ratelimit
+  labels:
+    app: ratelimit
+    service: ratelimit
+spec:
+  ports:
+  - port: 8081
+    name: grpc
+    targetPort: grpc
+  selector:
+    app: ratelimit

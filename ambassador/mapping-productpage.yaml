@@ -1,4 +1,4 @@
-apiVersion: getambassador.io/v2
+apiVersion: getambassador.io/v3alpha1
 kind: Mapping
 metadata:
   name: bookinfo-productpage
@@ -14,4 +14,3 @@ spec:
         - request_headers:
             header_name: teste
             key: foo
-            

@@ -6,7 +6,59 @@ data:
   config: |-
     domain: emissary
     descriptors:
-      - key: foo
-        rate_limit:
-          unit: minute
-          requests_per_unit: 5
+      - key: generic_key
+        value: gw_name_1
+        descriptors: 
+          - key: generic_key
+            value: low
+            rate_limit:
+              unit: second
+              requests_per_unit: 10
+          - key: generic_key
+            value: default
+            rate_limit:
+              unit: second
+              requests_per_unit: 30
+          - key: generic_key
+            value: high
+            rate_limit:
+              unit: second
+              requests_per_unit: 50
+      - key: generic_key
+        value: gw_name_2
+        descriptors: 
+          - key: generic_key
+            value: low
+            rate_limit:
+              unit: second
+              requests_per_unit: 10
+          - key: generic_key
+            value: default
+            rate_limit:
+              unit: second
+              requests_per_unit: 30
+          - key: generic_key
+            value: high
+            rate_limit:
+              unit: second
+              requests_per_unit: 50
+      - key: generic_key
+        value: gw_name_3
+        descriptors: 
+          - key: generic_key
+            value: low
+            rate_limit:
+              unit: second
+              requests_per_unit: 10
+          - key: generic_key
+            value: default
+            rate_limit:
+              unit: second
+              requests_per_unit: 30
+          - key: generic_key
+            value: high
+            rate_limit:
+              unit: second
+              requests_per_unit: 50
+          
+          

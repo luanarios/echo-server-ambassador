@@ -1,16 +1,15 @@
-apiVersion: getambassador.io/v3alpha1
+apiVersion: getambassador.io/v2
 kind: Mapping
 metadata:
-  name: bookinfo-productpage
+  name: bookinfo-productpage4
   namespace: default
 spec:
   host: test.bookinfo.com
-  prefix: /
+  prefix: /4
   service: productpage.default.svc:9080
   timeout_ms: 30000
   labels:
     emissary:
       - grupo:
-        - request_headers:
-            header_name: teste
-            key: foo
+          - generic_key: gw_name_3
+          - generic_key: default
